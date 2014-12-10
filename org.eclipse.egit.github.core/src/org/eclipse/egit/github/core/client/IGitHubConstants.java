@@ -129,6 +129,8 @@ public interface IGitHubConstants {
 	/** */
 	String SEGMENT_MEMBERS = "/members"; //$NON-NLS-1$
 	/** */
+	String SEGMENT_MEMBERSHIP = "/memberships"; //$NON-NLS-1$
+	/** */
 	String SEGMENT_MERGE = "/merge"; //$NON-NLS-1$
 	/** */
 	String SEGMENT_MILESTONES = "/milestones"; //$NON-NLS-1$

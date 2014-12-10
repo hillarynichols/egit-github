@@ -11,6 +11,7 @@
 package org.eclipse.egit.github.core.service;
 
 import static org.eclipse.egit.github.core.client.IGitHubConstants.SEGMENT_MEMBERS;
+import static org.eclipse.egit.github.core.client.IGitHubConstants.SEGMENT_MEMBERSHIP;
 import static org.eclipse.egit.github.core.client.IGitHubConstants.SEGMENT_ORGS;
 import static org.eclipse.egit.github.core.client.IGitHubConstants.SEGMENT_REPOS;
 import static org.eclipse.egit.github.core.client.IGitHubConstants.SEGMENT_TEAMS;
@@ -218,6 +219,26 @@ public class TeamService extends GitHubService {
 		StringBuilder uri = new StringBuilder(SEGMENT_TEAMS);
 		uri.append('/').append(id);
 		uri.append(SEGMENT_MEMBERS);
+		uri.append('/').append(user);
+		client.put(uri.toString());
+	}
+	
+	/**
+	 * Add given user to team with given id using updated constants
+	 *
+	 * @param id
+	 * @param user
+	 * @throws IOException
+	 */
+	public void addMembership(int id, String user) throws IOException {
+		if (user == null)
+			throw new IllegalArgumentException("User cannot be null"); //$NON-NLS-1$
+		if (user.length() == 0)
+			throw new IllegalArgumentException("User cannot be empty"); //$NON-NLS-1$
+
+		StringBuilder uri = new StringBuilder(SEGMENT_TEAMS);
+		uri.append('/').append(id);
+		uri.append(SEGMENT_MEMBERSHIP);
 		uri.append('/').append(user);
 		client.put(uri.toString());
 	}
